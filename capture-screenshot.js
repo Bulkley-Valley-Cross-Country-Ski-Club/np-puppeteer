@@ -1,7 +1,6 @@
 const puppeteer = require('puppeteer');
 
-// note - darkMode is demised and no longer does anything
-async function captureScreenshot(url, darkMode) {
+async function captureScreenshot(url) {
     const browser = await puppeteer.launch({
         headless: "new"
     });
@@ -27,7 +26,7 @@ async function captureScreenshot(url, darkMode) {
             await Promise.all(promises);
         }
         await waitTillHTMLRendered(page)
-        console.log(`Capturing screenshot - dark mode? ${darkMode}`)
+        console.log(`Capturing screenshot`)
         const map = page
         // await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
         console.log('Returning screenshot')
@@ -74,4 +73,4 @@ const waitTillHTMLRendered = async (page, timeout = 120000) => { // TODO - figur
 const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 
-captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Black-Jack-Ski-Club/map?print=true&header=false&dark=true", false);
+captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Bulkley-Valley-Nordic?print=true&header=false");
