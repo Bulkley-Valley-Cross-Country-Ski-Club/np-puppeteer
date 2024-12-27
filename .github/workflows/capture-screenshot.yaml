@@ -22,31 +22,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Fetch Report from API
-        run: |
-            curl -o report.json "https://api.nordic-pulse.com/v3/ski-areas/BC-BlackJack/full-report?apiKey=${{ secrets.NORDIC_PULSE_API_KEY }}"
-
-      - name: Install AWS CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y awscli
-
-      - name: Configure AWS CLI
-        run: aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} && aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}     
-
-      - name: Upload Report to S3
-        run: |
-            aws s3 cp report.json s3://np-screenshot/report.json --region us-west-2
-            aws s3api put-object-tagging --bucket np-screenshot --key report.json --tagging 'TagSet=[{Key=public,Value=yes}]' --region us-west-2
-
       - name: Capture Screenshot
         run: node capture-screenshot.js
-
-      - name: Upload Screenshot to S3
-
-        run: |
-            aws s3 cp screenshot.png s3://np-screenshot/screenshot.png --region us-west-2
-            aws s3api put-object-tagging --bucket np-screenshot --key screenshot.png --tagging 'TagSet=[{Key=public,Value=yes}]' --region us-west-2
             
   cleanup-runs:
     name: Delete workflow runs
