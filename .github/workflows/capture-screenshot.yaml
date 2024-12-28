@@ -7,7 +7,7 @@ on:
 
 jobs:
   capture-screenshot:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout code
@@ -20,11 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Install AWS CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y awscli
 
       - name: Capture Screenshot
         run: node capture-screenshot.js
