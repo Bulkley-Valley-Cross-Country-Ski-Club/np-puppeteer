@@ -22,9 +22,9 @@ jobs:
         run: npm install
 
       - name: Install AWS CLI
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y awscli
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
 
       - name: Capture Screenshot
         run: node capture-screenshot.js
