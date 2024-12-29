@@ -73,4 +73,4 @@ const waitTillHTMLRendered = async (page, timeout = 120000) => { // TODO - figur
 const delay = (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 
-captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Bulkley-Valley-Nordic?print=true&header=false");
+captureScreenshot("https://nordic-pulse.com/ski-areas/CA/BC/Bulkley-Valley-Nordic/map?print=true&header=false");
