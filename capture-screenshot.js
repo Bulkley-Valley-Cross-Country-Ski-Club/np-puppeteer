@@ -12,7 +12,7 @@ async function captureScreenshot(url) {
         {
             console.log('New page')
             const targetPage = page;
-            await targetPage.setViewport({width: 1080, height: 1920});
+            await targetPage.setViewport({width: 960, height: 1280});
         }
         {
             console.log('Loading')
